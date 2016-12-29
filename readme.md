@@ -1,35 +1,21 @@
-# EloquentComposite: Composite Handling for Eloquent
+# SwitchBlade: Custom Directives for the Laravel Blade templating engine
 
-[![Latest Stable Version](https://poser.pugx.org/awkwardideas/eloquentcomposite/v/stable)](https://packagist.org/packages/awkwardideas/eloquentcomposite)
-[![Total Downloads](https://poser.pugx.org/awkwardideas/eloquentcomposite/downloads)](https://packagist.org/packages/awkwardideas/eloquentcomposite)
-[![Latest Unstable Version](https://poser.pugx.org/awkwardideas/eloquentcomposite/v/unstable)](https://packagist.org/packages/awkwardideas/eloquentcomposite)
-[![License](https://poser.pugx.org/awkwardideas/eloquentcomposite/license)](https://packagist.org/packages/awkwardideas/eloquentcomposite)
+[![Latest Stable Version](https://poser.pugx.org/awkwardideas/switchblade/v/stable)](https://packagist.org/packages/awkwardideas/switchblade)
+[![Total Downloads](https://poser.pugx.org/awkwardideas/switchblade/downloads)](https://packagist.org/packages/awkwardideas/switchblade)
+[![Latest Unstable Version](https://poser.pugx.org/switchblade/eloquentcomposite/v/unstable)](https://packagist.org/packages/awkwardideas/switchblade)
+[![License](https://poser.pugx.org/awkwardideas/switchblade/license)](https://packagist.org/packages/awkwardideas/switchblade)
 
 ## Install Via Composer
 
-composer require awkwardideas/eloquentcomposite
+composer require awkwardideas/switchblade
 
 ## Add to config/app.php
 
 Under Package Service Providers Add
 
-AwkwardIdeas\EloquentComposite\EloquentCompositeServiceProvider::class,
-
-## Use statement on Model
-
-In your model, replace this line:
-use Illuminate\Database\Eloquent\Model
-
-With this:
-use AwkwardIdeas\EloquentComposite\Model;
-
+AwkwardIdeas\SwitchBlade\SwitchBladeServiceProvider::class,
 
 ## Code use
 
-In your model set the following:
-protected $connection = '[your_connection_name_here]';
-protected $table = '[your_table_name_here]';
-protected $compositeKey = ['your', 'composite', 'key', 'columns'];
+@htmlAttribute($foo->bar)
 
-Then to update a specific column, use:
-$this->UpdateWithComposite('column_name');
