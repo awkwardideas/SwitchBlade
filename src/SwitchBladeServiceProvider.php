@@ -43,4 +43,8 @@ class SwitchBladeServiceProvider extends ServiceProvider
         return explode(', ', str_replace(['(', ')'], '', $argumentString));
     }
 
+    private function getConfigPath()
+    {
+        return config_path('switchblade.php');
+    }
 }
