@@ -1,0 +1,24 @@
+{
+  "name": "awkwardideas/switchblade",
+  "description": "Extended blade directives for laravel",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Chad Haney",
+      "email": "chad@awkwardideas.com"
+    },
+    {
+      "name": "Awkward Ideas",
+      "email": "support@awkwardideas.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "AwkwardIdeas\\SwitchBlade\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
