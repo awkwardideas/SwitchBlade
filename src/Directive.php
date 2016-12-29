@@ -1,9 +1,10 @@
 <?php
 namespace AwkwardIdeas\SwitchBlade;
 
+use Illuminate\Support\Facades\Blade;
 
 class Directive{
-    public function __construct()
+    public function AddCustomDirectives()
     {
         Blade::directive('htmlAttribute', function ($expression) {
             //begin with [A-Za-z]

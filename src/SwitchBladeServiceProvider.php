@@ -1,6 +1,5 @@
 <?php namespace AwkwardIdeas\SwitchBlade;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class SwitchBladeServiceProvider extends ServiceProvider
@@ -16,7 +15,7 @@ class SwitchBladeServiceProvider extends ServiceProvider
 
         $this->publishes([$configPath => $this->getConfigPath()], 'config');
 
-        $directives = new Directives();
+        Directive::AddCustomDirectives();
 
 
     }
