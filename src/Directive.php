@@ -4,14 +4,12 @@ namespace AwkwardIdeas\SwitchBlade;
 use Illuminate\Support\Facades\Blade;
 
 class Directive{
-    public function AddCustomDirectives()
+    public static function AddCustomDirectives()
     {
         Blade::directive('htmlAttribute', function ($expression) {
             //begin with [A-Za-z]
             //allowed after first [A-Za-z][0-9]-_:.
-            $pattern='/[^A-Za-z][^A-Za-z0-9\-_:\.]/';
-            $replacement="";
-            return "<?php echo preg_replace($pattern, $replacement, $expression); ?>";
+            return "<?php echo preg_replace('/[^a-z\d]/i', '', {$expression}); ?>";
         });
 
         /*

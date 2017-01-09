@@ -46,4 +46,5 @@ class SwitchBladeServiceProvider extends ServiceProvider
     {
         return config_path('switchblade.php');
     }
+
 }
