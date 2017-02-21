@@ -18,7 +18,7 @@ class Directive{
          * Usage: @dd($variableToDump)
          */
         Blade::directive('dd', function ($expression) {
-            return "<?php dd(with{$expression}); ?>";
+            return "<?php dd($expression); ?>";
         });
 
         /*
