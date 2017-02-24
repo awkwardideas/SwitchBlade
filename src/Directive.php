@@ -62,5 +62,16 @@ class Directive{
 
             return "<?php {$name} = {$value}; ?>";
         });
+
+        /*
+         * Get Environtment variable.
+         *
+         * Usage: @getenv($name)
+         */
+        Blade::directive('getenv', function ($argumentString) {
+            list($variable) = $this->getArguments($argumentString);
+
+            return "<?php getenv({$variable}); ?>";
+        });
     }
 }
