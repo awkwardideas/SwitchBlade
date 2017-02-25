@@ -70,7 +70,7 @@ class Directive{
          */
         Blade::directive('getenv', function ($variable) {
 
-            return "<?php getenv({$variable}); ?>";
+            return "<?php getenv($variable); ?>";
         });
     }
 }
