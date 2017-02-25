@@ -68,8 +68,7 @@ class Directive{
          *
          * Usage: @getenv($name)
          */
-        Blade::directive('getenv', function ($argumentString) {
-            list($variable) = $this->getArguments($argumentString);
+        Blade::directive('getenv', function ($variable) {
 
             return "<?php getenv({$variable}); ?>";
         });
