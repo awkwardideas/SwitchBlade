@@ -73,8 +73,7 @@ class Directive{
         /*
          *  Perform a switch statement
          *
-         *  Usage: @switch($expression)
-         *          @case('foo')
+         *  Usage: @switch($expression, 'foo')
          *              <span>stuff</span>
          *          @endcase
          *          @defaultcase
@@ -82,15 +81,37 @@ class Directive{
          *          @endswitch
          */
         Blade::directive('switch', function($expression) {
-            return "<?php switch($expression){ ?>";
+            $args = self::GetArguments($expression);
+            if(count($args) == 2){
+                return "<?php switch($args[0]):" . PHP_EOL . "case $args[1]: ?>";
+            }else{
+                $switchExpression = array_shift($args);
+                $switch = "<?php switch($switchExpression):".PHP_EOL;
+                foreach($args as $arg){
+                    $switch .= "case $arg:" . PHP_EOL;
+                }
+                $switch .= "?>";
+                return $switch;
+            }
+
         });
 
         Blade::directive('endswitch', function($expression) {
-            return "<?php }; ?>";
+            return "<?php endswitch; ?>";
         });
 
         Blade::directive('case', function($expression){
-            return "<?php case $expression: ?>";
+            $args = self::GetArguments($expression);
+            if(count($args)==1){
+                return "<?php case $expression: ?>";
+            }else{
+                $cases = "<?php ";
+                foreach($args as $arg){
+                    $cases .= "case $arg:" . PHP_EOL;
+                }
+                $cases .= "?>";
+                return $cases;
+            }
         });
 
         Blade::directive('endcase', function($expression){
@@ -154,7 +175,7 @@ class Directive{
         });
 
         Blade::directive('hascount', function($expression){
-            return "<?php if(($expression)->count() > 0): ?>";
+            return "<?php if({$expression}->count() > 0): ?>";
         });
 
         Blade::directive('endhascount', function($expression){
@@ -164,6 +185,6 @@ class Directive{
 
     }
     public static function GetArguments($expression){
-        return explode(',',str_replace(['(',')',' '], '', $expression));
+        return explode(',', $expression);
     }
 }
