@@ -26,7 +26,8 @@ class Directive{
          *
          * Usage: @explode($delimiter, $string)
          */
-        Blade::directive('explode', function ($delimiter, $string) {
+        Blade::directive('explode', function ($expression) {
+            list($delimiter, $string) = explode(',',str_replace(['(',')',' '], '', $expression));
             return "<?php echo explode({$delimiter}, {$string}); ?>";
         });
 
@@ -35,7 +36,8 @@ class Directive{
          *
          * Usage: @implode($delimiter, $array)
          */
-        Blade::directive('implode', function ($delimiter, $array) {
+        Blade::directive('implode', function ($expression) {
+            list($delimiter, $array) = explode(',',str_replace(['(',')',' '], '', $expression));
             return "<?php echo implode({$delimiter}, {$array}); ?>";
         });
 
@@ -53,7 +55,8 @@ class Directive{
          *
          * Usage: @set($name, value)
          */
-        Blade::directive('set', function ($name, $value) {
+        Blade::directive('set', function ($expression) {
+            list($name, $value) = explode(',',str_replace(['(',')',' '], '', $expression));
             return "<?php {$name} = {$value}; ?>";
         });
 
@@ -62,9 +65,9 @@ class Directive{
          *
          * Usage: @getenv($name)
          */
-        Blade::directive('getenv', function ($variable) {
+        Blade::directive('getenv', function ($expression) {
 
-            return "<?php echo getenv($variable); ?>";
+            return "<?php echo getenv($expression); ?>";
         });
     }
 }
