@@ -27,7 +27,7 @@ class Directive{
          * Usage: @explode($delimiter, $string)
          */
         Blade::directive('explode', function ($expression) {
-            list($delimiter, $string) = explode(',',str_replace(['(',')',' '], '', $expression));
+            list($delimiter, $string) = self::GetArguments($expression);
             return "<?php echo explode({$delimiter}, {$string}); ?>";
         });
 
@@ -37,7 +37,7 @@ class Directive{
          * Usage: @implode($delimiter, $array)
          */
         Blade::directive('implode', function ($expression) {
-            list($delimiter, $array) = explode(',',str_replace(['(',')',' '], '', $expression));
+            list($delimiter, $array) = self::GetArguments($expression);
             return "<?php echo implode({$delimiter}, {$array}); ?>";
         });
 
@@ -47,7 +47,7 @@ class Directive{
          * Usage: @var_dump($variableToDump)
          */
         Blade::directive('varDump', function ($expression) {
-            return "<?php var_dump(with{$expression}); ?>";
+            return "<?php var_dump($expression); ?>";
         });
 
         /*
@@ -56,7 +56,7 @@ class Directive{
          * Usage: @set($name, value)
          */
         Blade::directive('set', function ($expression) {
-            list($name, $value) = explode(',',str_replace(['(',')',' '], '', $expression));
+            list($name, $value) = self::GetArguments($expression);
             return "<?php {$name} = {$value}; ?>";
         });
 
@@ -69,5 +69,100 @@ class Directive{
 
             return "<?php echo getenv($expression); ?>";
         });
+
+        /*
+         *  Perform a switch statement
+         *
+         *  Usage: @switch($expression)
+         *          @case('foo')
+         *              <span>stuff</span>
+         *          @endcase
+         *          @defaultcase
+         *              <span>default stuff</span>
+         *          @endswitch
+         */
+        Blade::directive('switch', function($expression) {
+            return "<?php switch($expression){ ?>";
+        });
+
+        Blade::directive('endswitch', function($expression) {
+            return "<?php }; ?>";
+        });
+
+        Blade::directive('case', function($expression){
+            return "<?php case $expression: ?>";
+        });
+
+        Blade::directive('endcase', function($expression){
+            return "<?php break; ?>";
+        });
+
+        Blade::directive('defaultcase', function($expression){
+           return "<?php default: ?>";
+        });
+
+        // Add @continue for Loops
+        Blade::directive('continue', function($expression)
+        {
+            return '<?php continue; ?>';
+        });
+
+        // Add @break for Loops
+        Blade::directive('break', function($expression)
+        {
+            return '<?php break; ?>';
+        });
+
+        // Add @ifempty for Loops
+        Blade::directive('ifempty', function($expression)
+        {
+            return "<?php if(count$expression == 0): ?>";
+        });
+
+        // Add @endifempty for Loops
+        Blade::directive('endifempty', function($expression)
+        {
+            return '<?php endif; ?>';
+        });
+
+        // Add @optional for Complex Yielding
+        Blade::directive('optional', function($expression)
+        {
+            return "<?php if(trim(\$__env->yieldContent{$expression})): ?>";
+        });
+
+        // Add @endoptional for Complex Yielding
+        Blade::directive('endoptional', function($expression)
+        {
+            return "<?php endif; ?>";
+        });
+
+        Blade::directive('increment', function($expression){
+            return "<?php {$expression}++; ?>";
+        });
+
+        Blade::directive('decrement', function($expression){
+            return "<?php {$expression}--; ?>";
+        });
+
+        Blade::directive('iffileexists', function($expression){
+            return "<?php if(file_exists({$expression})): ?>";
+        });
+
+        Blade::directive('endiffileexists', function($expression){
+            return "<?php endif; ?>";
+        });
+
+        Blade::directive('hascount', function($expression){
+           return "<?php if(($expression)->count() > 0): ?>";
+        });
+
+        Blade::directive('endhascount', function($expression){
+           return "<?php endif; ?>";
+        });
+
+        function GetArguments($expression){
+            return explode(',',str_replace(['(',')',' '], '', $expression));
+        }
     }
 }
