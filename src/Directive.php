@@ -26,9 +26,7 @@ class Directive{
          *
          * Usage: @explode($delimiter, $string)
          */
-        Blade::directive('explode', function ($argumentString) {
-            list($delimiter, $string) = $this->getArguments($argumentString);
-
+        Blade::directive('explode', function ($delimiter, $string) {
             return "<?php echo explode({$delimiter}, {$string}); ?>";
         });
 
@@ -37,9 +35,7 @@ class Directive{
          *
          * Usage: @implode($delimiter, $array)
          */
-        Blade::directive('implode', function ($argumentString) {
-            list($delimiter, $array) = $this->getArguments($argumentString);
-
+        Blade::directive('implode', function ($delimiter, $array) {
             return "<?php echo implode({$delimiter}, {$array}); ?>";
         });
 
@@ -57,9 +53,7 @@ class Directive{
          *
          * Usage: @set($name, value)
          */
-        Blade::directive('set', function ($argumentString) {
-            list($name, $value) = $this->getArguments($argumentString);
-
+        Blade::directive('set', function ($name, $value) {
             return "<?php {$name} = {$value}; ?>";
         });
 
