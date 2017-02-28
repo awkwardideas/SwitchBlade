@@ -98,7 +98,7 @@ class Directive{
         });
 
         Blade::directive('defaultcase', function($expression){
-           return "<?php default: ?>";
+            return "<?php default: ?>";
         });
 
         // Add @continue for Loops
@@ -154,15 +154,16 @@ class Directive{
         });
 
         Blade::directive('hascount', function($expression){
-           return "<?php if(($expression)->count() > 0): ?>";
+            return "<?php if(($expression)->count() > 0): ?>";
         });
 
         Blade::directive('endhascount', function($expression){
-           return "<?php endif; ?>";
+            return "<?php endif; ?>";
         });
 
-        function GetArguments($expression){
-            return explode(',',str_replace(['(',')',' '], '', $expression));
-        }
+
+    }
+    public static function GetArguments($expression){
+        return explode(',',str_replace(['(',')',' '], '', $expression));
     }
 }
