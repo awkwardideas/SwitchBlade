@@ -182,7 +182,13 @@ class Directive{
             return "<?php endif; ?>";
         });
 
-
+        Blade::directive('lang', function($expression){
+            $args = self::GetArguments($expression);
+            $key = $args[0];
+            $replace = (array_key_exists(1,$args)) ? $args[1] : "[]";
+            $locale =  (array_key_exists(2,$args)) ? $args[2] : "'en'";
+            return "<?php echo app('translator')->choice({$key}, 1, {$replace}, {$locale}); ?>";
+        });
     }
     public static function GetArguments($expression){
         return explode(',', $expression);

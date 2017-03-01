@@ -96,3 +96,7 @@ Set, increment or decrement variables without having to go in and out of php.
   * Obtains the count of the variable, continuing if it is greater than 0
 * ```@endhascount```
   * Ends has count condition
+  
+##Lang Modification
+* ```@lang(key[, replace, locale])```
+  * Modified to pass through to choice of 1, allowing plurals to be put in without having to have all singular usages changed to choice.
