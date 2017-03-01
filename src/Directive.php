@@ -137,7 +137,7 @@ class Directive{
         // Add @ifempty for Loops
         Blade::directive('ifempty', function($expression)
         {
-            return "<?php if(count$expression == 0): ?>";
+            return "<?php if(count($expression) == 0): ?>";
         });
 
         // Add @endifempty for Loops
