@@ -59,7 +59,6 @@ Set, increment or decrement variables without having to go in and out of php.
   * Does a dump and die on the variable
 * ```@varDump(variable)```
   * Does a dump of the variable
-
 * ```@getenv(ENV_VAR_NAME)```
   * Echos the environment variable
 
@@ -89,7 +88,6 @@ Set, increment or decrement variables without having to go in and out of php.
   * Tests file path, continuing only if file exists
 * ```@endiffileexists```
   * Ends file exists condition
-
 
 ### Has Count
 * ```@hascount(variable)```
