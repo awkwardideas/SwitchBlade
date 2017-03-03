@@ -76,7 +76,19 @@ Set, increment or decrement variables without having to go in and out of php.
   * If count of variable == 0
 * ```@endifempty```
   * Ends if empty statement
-
+  
+### If null  
+* ```@ifnull(variable)```
+  * If variable is null
+* ```@endifnull```
+  * Ends if null statement
+  
+### Not Null
+* ```@notnull(variable)```
+  * If variable is not null
+* ```@endnotnull```
+  * Ends not null statement
+  
 ### Optional Yield
 * ```@optional('section')```
   * Outputs the content wrapped only if the referenced section has value

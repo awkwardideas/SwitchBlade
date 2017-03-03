@@ -11,7 +11,7 @@ class SwitchBladeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $configPath = __DIR__ . '/../config/migrator.php';
+        $configPath = __DIR__ . '/../config/switchblade.php';
 
         $this->publishes([$configPath => $this->getConfigPath()], 'config');
 

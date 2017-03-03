@@ -182,6 +182,22 @@ class Directive{
             return "<?php endif; ?>";
         });
 
+        Blade::directive('isnull', function($expression){
+            return "<?php if(is_null({$expression})): ?>";
+        });
+
+        Blade::directive('endisnull', function($expression){
+            return "<?php endif; ?>";
+        });
+
+        Blade::directive('notnull', function($expression){
+            return "<?php if(!is_null({$expression})): ?>";
+        });
+
+        Blade::directive('endnotnull', function($expression){
+            return "<?php endif; ?>";
+        });
+
         Blade::directive('lang', function($expression){
             $args = self::GetArguments($expression);
             $key = $args[0];
