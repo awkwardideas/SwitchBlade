@@ -96,42 +96,40 @@ Miscellaneous shortcuts for commonly used PHP structures.
 @break
 ```
 
-### If empty  
-* ```@ifempty(variable)```
-  * If count of variable == 0
-* ```@endifempty```
-  * Ends if empty statement
-  
-### If null  
-* ```@ifnull(variable)```
-  * If variable is null
-* ```@endifnull```
-  * Ends if null statement
-  
-### Not Null
-* ```@notnull(variable)```
-  * If variable is not null
-* ```@endnotnull```
-  * Ends not null statement
-  
-### Optional Yield
-* ```@optional('section')```
-  * Outputs the content wrapped only if the referenced section has value
-* ```@endoptional```
-  * Ends optional output statement
-  
-### File exists
-* ```@iffileexists(filepath)```
-  * Tests file path, continuing only if file exists
-* ```@endiffileexists```
-  * Ends file exists condition
+### If-variations
 
-### Has Count
-* ```@hascount(variable)```
-  * Obtains the count of the variable, continuing if it is greater than 0
-* ```@endhascount```
-  * Ends has count condition
-  
+```blade
+{{-- Check if the given variable is empty --}}
+@ifempty($variable)
+
+@endifempty
+
+{{-- Check if the given varaible is null --}}
+@ifnull($variable)
+
+@endifnull
+
+{{-- Check if the given variable is not null --}}
+@notnull($variable)
+
+@endnotnull
+
+{{-- Optionally yield a section if it has a value --}}
+@optional('section')
+
+@endoptional
+
+{{-- Check if a file exists --}}
+@iffileexists($pathToFile)
+
+@endiffileexists
+
+{{-- Check if the given value's "count" value is greater than 0 --}}
+@hascount($variable)
+
+@endhascount
+```
+
 ##Lang Modification
 * ```@lang(key[, replace, locale])```
   * Modified to pass through to choice of 1, allowing plurals to be put in without having to have all singular usages changed to choice.
