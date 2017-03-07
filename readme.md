@@ -7,14 +7,17 @@
 
 ## Install Via Composer
 
-composer require awkwardideas/switchblade
+```bash
+$ composer require awkwardideas/switchblade
+```
 
 ## Add to config/app.php
 
 Under Package Service Providers Add
 
+```php
 AwkwardIdeas\SwitchBlade\SwitchBladeServiceProvider::class,
-
+```
 
 # Available Directives
 
