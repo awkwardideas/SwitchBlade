@@ -39,9 +39,17 @@ The switch statement is similar to a series of IF statements on the same express
 
 ## Variable Modification
 Set, increment or decrement variables without having to go in and out of php.
-* ```@set(variable, value)```
-* ```@increment(variable)```
-* ```@decrement(variable)```
+
+```blade
+{{-- Set the variable "$foo" equal to "hello world" --}}
+@set('foo', 'hello world')
+
+{{-- Increment the variable "$bar" by one --}}
+@increment($bar)
+
+{{-- Decrement the variable "$baz" by one --}}
+@decrement($baz)
+```
 
 ---
 
