@@ -19,7 +19,7 @@ AwkwardIdeas\SwitchBlade\SwitchBladeServiceProvider::class,
 # Available Directives
 
 ## Switch via Blade
-A php switch statement implemented via blade. 
+A php switch statement implemented via blade.
 
 The switch statement is similar to a series of IF statements on the same expression. In many occasions, you may want to compare the same variable (or expression) with many different values, and execute a different piece of code depending on which value it equals to. This is exactly what the switch statement is for.
 
@@ -30,10 +30,10 @@ The switch statement is similar to a series of IF statements on the same express
 * ```@case(caseStatement1 [, caseStatement2, caseStatement3...])```
   * Add this to start a case statement. Optionally you can add as many case statements as you would like, which would all execute the code between the ```@case```and next ```@endcase``` call.
 * ```@defaultcase```
-  * Add this near the bottom of the switch to handle any variants of the expression which may not have been captured by a case statement. No end case is necessary since it will end with ```@endswitch``` 
+  * Add this near the bottom of the switch to handle any variants of the expression which may not have been captured by a case statement. No end case is necessary since it will end with ```@endswitch```
 * ```@endswitch```
   * Add this to end your switch statement
-  
+
 ---
 
 ## Variable Modification
@@ -69,32 +69,32 @@ Set, increment or decrement variables without having to go in and out of php.
   * Adds a php continue; tag to skip the rest of the current loop iteration
 * ```@break```
   * Adds a php break; tag which ends the execution of a for, foreach, do-while or switch structure
-  
-  
-### If empty  
+
+
+### If empty
 * ```@ifempty(variable)```
   * If count of variable == 0
 * ```@endifempty```
   * Ends if empty statement
-  
-### If null  
+
+### If null
 * ```@ifnull(variable)```
   * If variable is null
 * ```@endifnull```
   * Ends if null statement
-  
+
 ### Not Null
 * ```@notnull(variable)```
   * If variable is not null
 * ```@endnotnull```
   * Ends not null statement
-  
+
 ### Optional Yield
 * ```@optional('section')```
   * Outputs the content wrapped only if the referenced section has value
 * ```@endoptional```
   * Ends optional output statement
-  
+
 ### File exists
 * ```@iffileexists(filepath)```
   * Tests file path, continuing only if file exists
@@ -106,7 +106,7 @@ Set, increment or decrement variables without having to go in and out of php.
   * Obtains the count of the variable, continuing if it is greater than 0
 * ```@endhascount```
   * Ends has count condition
-  
+
 ##Lang Modification
 * ```@lang(key[, replace, locale])```
   * Modified to pass through to choice of 1, allowing plurals to be put in without having to have all singular usages changed to choice.
