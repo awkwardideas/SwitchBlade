@@ -70,12 +70,18 @@ Various ways to output variables to the screen.
 ---
 
 ## Debug Tools
-* ```@dd(variable)```
-  * Does a dump and die on the variable
-* ```@varDump(variable)```
-  * Does a dump of the variable
-* ```@getenv(ENV_VAR_NAME)```
-  * Echos the environment variable
+Some tools to more easily debug your Blade templates.
+
+```blade
+{{-- Dump the given variable(s) and stop execution of the script --}}
+@dd($variable)
+
+{{-- Dumps the given variable(s) to the screen --}}
+@varDump($variable)
+
+{{-- Echoes out the value of the given environment variable --}}
+@getenv('APP_URL')
+```
 
 ---
 
