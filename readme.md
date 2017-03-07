@@ -86,12 +86,16 @@ Some tools to more easily debug your Blade templates.
 ---
 
 ## Other helpful directives
-* ```@continue```
-  * Adds a php continue; tag to skip the rest of the current loop iteration
-* ```@break```
-  * Adds a php break; tag which ends the execution of a for, foreach, do-while or switch structure
-  
-  
+Miscellaneous shortcuts for commonly used PHP structures.
+
+```blade
+{{-- Continue to the next iteration from in a loop --}}
+@continue
+
+{{-- Break out of a loop or switch statement --}}
+@break
+```
+
 ### If empty  
 * ```@ifempty(variable)```
   * If count of variable == 0
