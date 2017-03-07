@@ -131,5 +131,8 @@ Miscellaneous shortcuts for commonly used PHP structures.
 ```
 
 ##Lang Modification
-* ```@lang(key[, replace, locale])```
-  * Modified to pass through to choice of 1, allowing plurals to be put in without having to have all singular usages changed to choice.
+
+```blade
+{{-- Modify the language configuration --}}
+@lang('password_reset', 'Go ahead and reset your password!', 'en')
+```
