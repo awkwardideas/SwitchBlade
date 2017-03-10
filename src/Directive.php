@@ -28,7 +28,7 @@ class Directive{
          */
         Blade::directive('explode', function ($expression) {
             list($delimiter, $string, $index) = self::GetArguments($expression);
-            return "<?php echo explode({$delimiter}, {$string})[$index]; ?>";
+            return "<?php echo (array_key_exists({$index},\$array=explode({$delimiter}, {$string}))) ? \$array[{$index}] : \"\" ?>";
         });
 
         /*
