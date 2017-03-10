@@ -149,7 +149,7 @@ class Directive{
         // Add @optional for Complex Yielding
         Blade::directive('optional', function($expression)
         {
-            return "<?php if(trim(\$__env->yieldContent{$expression})): ?>";
+            return "<?php if(trim(\$__env->yieldContent({$expression}))): ?>";
         });
 
         // Add @endoptional for Complex Yielding
