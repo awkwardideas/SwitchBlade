@@ -24,11 +24,11 @@ class Directive{
         /*
          * php explode() function.
          *
-         * Usage: @explode($delimiter, $string)
+         * Usage: @explode($delimiter, $string, $index)
          */
         Blade::directive('explode', function ($expression) {
-            list($delimiter, $string) = self::GetArguments($expression);
-            return "<?php echo explode({$delimiter}, {$string}); ?>";
+            list($delimiter, $string, $index) = self::GetArguments($expression);
+            return "<?php echo explode({$delimiter}, {$string})[$index]; ?>";
         });
 
         /*

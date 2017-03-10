@@ -50,8 +50,8 @@ Set, increment or decrement variables without having to go in and out of php.
 ## Variable Output
 * ```@htmlAttribute(value)```
   * Echos the value safe for use in html attributes like id
-* ```@explode(delimiter, string)```
-  * Echos the exploded result of the string, split by the delimiter
+* ```@explode(delimiter, string, index)```
+  * Echos the index of the exploded result of the string, split by the delimiter
 * ```@implode(delimiter, array)```
   * Echos the string result of the array joined by the delimiter
 
