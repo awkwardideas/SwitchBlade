@@ -9,7 +9,12 @@ class Directive{
         Blade::directive('htmlAttribute', function ($expression) {
             //begin with [A-Za-z]
             //allowed after first [A-Za-z][0-9]-_:.
-            return "<?php echo preg_replace('/[^a-z\d]/i', '', {$expression}); ?>";
+            //skips if expression is in format of @{{var}}
+            if(preg_match("/^\@\{\{.*\}\}$/m", $expression, $matches)) {
+                $expression = preg_replace('/[^a-z\d]/i', '', $expression);
+            }
+
+            return "<?php echo {$expression}; ?>";
         });
 
         /*
