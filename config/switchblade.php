@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'class'         => \AwkwardIdeas\SwitchBlade\Directive::class
+    'class'         => \AwkwardIdeas\SwitchBlade\Directive::class,
 ];
