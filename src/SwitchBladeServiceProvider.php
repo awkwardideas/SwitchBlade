@@ -1,4 +1,6 @@
-<?php namespace AwkwardIdeas\SwitchBlade;
+<?php
+
+namespace AwkwardIdeas\SwitchBlade;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -11,13 +13,11 @@ class SwitchBladeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $configPath = __DIR__ . '/../config/switchblade.php';
+        $configPath = __DIR__.'/../config/switchblade.php';
 
         $this->publishes([$configPath => $this->getConfigPath()], 'config');
 
         Directive::AddCustomDirectives();
-
-
     }
 
     /**
@@ -27,7 +27,6 @@ class SwitchBladeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 
     /**
@@ -46,5 +45,4 @@ class SwitchBladeServiceProvider extends ServiceProvider
     {
         return config_path('switchblade.php');
     }
-
 }
