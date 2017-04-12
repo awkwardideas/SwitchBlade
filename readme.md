@@ -117,3 +117,7 @@ Set, increment or decrement variables without having to go in and out of php.
 ##Bag
 * ```@bag(variable[,value])```
   * Appends a variable to a bag, or echos the bag as a list
+  
+### Init Script
+* ```@initScript([scriptName])```
+  * Adds the script name to a bag if a parameter is passed.  If no parameter is passed, the contents of the bag are dumped into a javascript window property.
