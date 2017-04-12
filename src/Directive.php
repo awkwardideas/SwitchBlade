@@ -214,14 +214,14 @@ class Directive{
         Blade::directive('bag', function($expression){
             if(is_string($expression) && strpos($expression,',')){
                 $args = self::GetArguments($expression);
-                return self::BagCall($args[0],$args[1]);
+                return self::BagCall(array_shift($args),$args);
             }else{
                 return self::BagCall($expression);
             }
         });
         Blade::directive('initScript', function($expression){
             if(is_string($expression) && $expression!=""){
-                return self::BagCall('initScripts',$expression);
+                return self::BagCall('initScripts',self::GetArguments($expression));
             }else{
                 return "<script type=\"text/javascript\">window.initScripts=\"" . self::BagCall('initScripts') . "\";</script>";
             }
@@ -232,11 +232,15 @@ class Directive{
     }
     public static function BagCall($bag, $value=""){
         $bag = "'".trim($bag, "'\"")."'";
-        if($value!=""){
-            $value = "'".trim($value, "'\"")."'";
-            return "<?php \$__env->startPush({$bag});?>{$value}<?php \$__env->stopPush(); ?>";
-        }else{
+        if($value==""){
             return "<?php echo implode(',', array_unique(array_map(function(\$item){ return trim(\$item,\" \\t\\n\\r\\0\\x0B'\");}, explode(\"''\",\$__env->yieldPushContent({$bag}))))); ?>";
+        }else{
+            if(is_array($value)){
+                $value = implode('', array_unique(array_map(function($item){ return "'" . trim($item,"'\"") . "'";}, $value)));
+            }else{
+                $value = "'".trim($value, "'\"")."'";
+            }
+            return "<?php \$__env->startPush({$bag});?>{$value}<?php \$__env->stopPush(); ?>";
         }
     }
 }
